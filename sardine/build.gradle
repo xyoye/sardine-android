@@ -1,0 +1,50 @@
+plugins {
+    id 'com.android.library'
+}
+
+ext {
+    sardine_version = "1.0.0"
+}
+
+android {
+    namespace 'com.xyoye.sardine'
+    compileSdkVersion 32
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 32
+        versionCode 1
+        versionName "$sardine_version"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation files('libs/simple-xml-2.7.1.jar')
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+}
+
+task makeJar(type: Copy) {
+    String jarName = "sardine-${sardine_version}.jar"
+    delete 'build/outputs/' + jarName
+
+    from('build/intermediates/aar_main_jar/release/')
+    into('build/outputs/')
+    include('classes.jar')
+    rename ('classes.jar', jarName)
+}
+
+makeJar.dependsOn(build)
