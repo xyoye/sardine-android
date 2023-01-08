@@ -4,15 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingHorizontal="20dp"
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#f3f3f3"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@id/et_url"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <EditText
+        android:id="@+id/et_url"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_marginTop="20dp"
+        android:hint="Url"
+        android:text="http://192.168.1.102:8080/"
+        app:layout_constraintBottom_toTopOf="@id/et_account"
+        app:layout_constraintTop_toBottomOf="@id/tv_result" />
+
+    <EditText
+        android:id="@+id/et_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Account"
+        app:layout_constraintBottom_toTopOf="@id/et_pwd"
+        app:layout_constraintTop_toBottomOf="@id/et_url" />
+
+    <EditText
+        android:id="@+id/et_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Password"
+        app:layout_constraintBottom_toTopOf="@id/bt_connect"
+        app:layout_constraintTop_toBottomOf="@id/et_account" />
+
+    <Button
+        android:id="@+id/bt_connect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="TEST"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/et_pwd" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
