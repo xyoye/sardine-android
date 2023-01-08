@@ -134,7 +134,7 @@ public final class SardineUtil {
     @SuppressWarnings("unchecked")
     public static <T> T unmarshal(Class<? extends T> type, InputStream in) throws IOException {
         try {
-            return getSerializer().read(type, in);
+            return getSerializer().read(type, in, SardineConfig.readXmlInStrictMode);
         } catch (SAXException e) {
             throw new RuntimeException(e.getMessage(), e);
         } catch (Exception e) {
