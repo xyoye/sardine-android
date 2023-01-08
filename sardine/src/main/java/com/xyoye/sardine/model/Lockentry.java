@@ -39,7 +39,7 @@ public class Lockentry {
     @Element
     private Lockscope lockscope;
 
-    @Element
+    @Element(required = false)
     private Locktype locktype;
 
     /**
